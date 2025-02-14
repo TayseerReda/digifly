@@ -10,8 +10,10 @@ A RESTful API for managing tasks using Laravel 10, featuring authentication with
 👉 CRUD operations for managing tasks  
 👉 Input validation  
 👉 Soft deletion of tasks  
+👉 Restore and permanently delete tasks  
 👉 Pagination for task listing  
 👉 API resource classes for structured responses  
+👉 Filter tasks by status  
 
 ---
 
@@ -120,6 +122,8 @@ Authorization: Bearer your-auth-token
 
 ### 1️⃣ Get All Tasks  
 **Endpoint:** `GET /api/tasks`  
+Supports filtering by status using `?status=pending`.
+
 **Response Example:**
 ```json
 {
@@ -166,6 +170,24 @@ Authorization: Bearer your-auth-token
 ```json
 {
   "message": "Task deleted successfully"
+}
+```
+
+### 6️⃣ Restore a Deleted Task  
+**Endpoint:** `POST /api/tasks/{id}/restore`  
+**Response:**
+```json
+{
+  "message": "Task restored successfully"
+}
+```
+
+### 7️⃣ Permanently Delete a Task (Force Delete)  
+**Endpoint:** `DELETE /api/tasks/{id}/force-delete`  
+**Response:**
+```json
+{
+  "message": "Task permanently deleted"
 }
 ```
 
